@@ -5,7 +5,7 @@
     This function is used to parse the custom 
     ScoreCard.msg from dtc_msgs
 """
-
+import rospy
 from typing import Dict
 from dtc_msgs.msg import ScoreCard
 from std_msgs.msg import Time
@@ -14,10 +14,11 @@ class ScoreCardParser:
 
     def __init__(self) -> None:
         pass
-
-    def rostime_to_darpatime(self, msg : Time) -> None:
-        # TODO
-        pass
+    
+    @staticmethod
+    def rostime_to_darpatime(msg : Time) -> float:
+        rostime = rospy.Time(msg.data.secs, msg.data.nsecs)
+        return rostime.to_sec()
 
     @staticmethod
     def parse_to_dict(msg : ScoreCard) -> Dict:
@@ -28,27 +29,27 @@ class ScoreCardParser:
             "location": {
                 "latitude": msg.location.location.latitude,
                 "longitude": msg.location.location.longitude,
-                "time_ago": ""  
+                "time_ago": ScoreCardParser.rostime_to_darpatime(msg.location.time_ago)  
             },
             "hr": {
                 "value": msg.heart_rate.rate,
-                "time_ago": ""  
+                "time_ago": ScoreCardParser.rostime_to_darpatime(msg.heart_rate.time_ago) 
             },
             "rr": {
                 "value": msg.respiratory_rate.rate,
-                "time_ago": ""  
+                "time_ago": ScoreCardParser.rostime_to_darpatime(msg.respiratory_rate.time_ago)
             },
             "alertness_ocular": {
                 "value": msg.alertness_ocular.value,
-                "time_ago": ""  
+                "time_ago": ScoreCardParser.rostime_to_darpatime(msg.alertness_ocular.time_ago)
             },
             "alertness_verbal": {
-                "value": msg.alterness_verbal.value,  
-                "time_ago": ""  
+                "value": msg.alertness_verbal.value,  
+                "time_ago": ScoreCardParser.rostime_to_darpatime(msg.alertness_verbal.time_ago)
             },
             "alertness_motor": {
-                "value": msg.alterness_motor.value,  
-                "time_ago": ""  
+                "value": msg.alertness_motor.value,  
+                "time_ago": ScoreCardParser.rostime_to_darpatime(msg.alertness_motor.time_ago)
             },
             "severe_hemorrhage": int(msg.severe_hemorrhage.value),  
             "respiratory_distress": int(msg.respiratory_distress.value),  

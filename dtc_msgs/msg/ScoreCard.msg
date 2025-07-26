@@ -16,5 +16,5 @@ dtc_msgs/Uint8TimeAgo trauma_upper_extremity
 dtc_msgs/Uint8TimeAgo trauma_lower_extremity
 
 dtc_msgs/Uint8TimeAgo alertness_ocular
-dtc_msgs/Uint8TimeAgo alterness_verbal
-dtc_msgs/Uint8TimeAgo alterness_motor
+dtc_msgs/Uint8TimeAgo alertness_verbal
+dtc_msgs/Uint8TimeAgo alertness_motor
