@@ -12,12 +12,17 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
   FILES
   NavSatFixArray.msg
+  NavSatFixTimeAgo.msg
+  RateTimeAgo.msg
+  BoolTimeAgo.msg
+  Uint8TimeAgo.msg
   ScoreCard.msg
   RespirationRate.msg
   HeartRate.msg
   GroundDetection.msg
   GroundImage.msg
 )
+catkin_python_setup()
 
 generate_messages(
   DEPENDENCIES

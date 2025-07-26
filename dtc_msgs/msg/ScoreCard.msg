@@ -1,18 +1,20 @@
 std_msgs/Header header
 
-sensor_msgs/NavSatFix location
+uint32 casualty_id
 
-bool severe_hemorrhage
-bool respiratory_distress
+dtc_msgs/NavSatFixTimeAgo location
 
-float64 heart_rate
-float64 respiratory_rate
+dtc_msgs/BoolTimeAgo severe_hemorrhage
+dtc_msgs/BoolTimeAgo respiratory_distress
 
-uint8 trauma_head
-uint8 trauma_torso
-uint8 trauma_upper_extremity
-uint8 trauma_lower_extremity
+dtc_msgs/RateTimeAgo heart_rate
+dtc_msgs/RateTimeAgo respiratory_rate
 
-uint8 alertness_ocular
-uint8 alterness_verbal
-uint8 alterness_motor
+dtc_msgs/Uint8TimeAgo trauma_head
+dtc_msgs/Uint8TimeAgo trauma_torso
+dtc_msgs/Uint8TimeAgo trauma_upper_extremity
+dtc_msgs/Uint8TimeAgo trauma_lower_extremity
+
+dtc_msgs/Uint8TimeAgo alertness_ocular
+dtc_msgs/Uint8TimeAgo alterness_verbal
+dtc_msgs/Uint8TimeAgo alterness_motor
