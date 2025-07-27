@@ -21,6 +21,8 @@ add_message_files(
   HeartRate.msg
   GroundDetection.msg
   GroundImage.msg
+  JackalStatus.msg
+  FalconStatus.msg
 )
 catkin_python_setup()
 

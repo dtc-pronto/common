@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="system_status" type="jackal_node.py" name="jackal_status" output="screen">
+        <rosparam command="load" file="$(find system_status)/config/topics.yaml"/>
+    </node>
+</launch>
