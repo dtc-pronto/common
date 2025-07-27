@@ -1,0 +1,8 @@
+<launch>
+    <arg name="ip" default="10.10.10.10"/>
+    <arg name="port" default="7505"/>
+    <node pkg="rtk_correction" type="broadcaster.py" name="rtk_broadcaster" output="screen">
+        <param name="ip" value="$(arg ip)"/>
+        <param name="port" value="$(arg port)"/>
+    </node>
+</launch>
