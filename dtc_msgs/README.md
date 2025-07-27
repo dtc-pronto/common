@@ -82,6 +82,29 @@ std_msgs/Header header
 std_msgs/UInt64 casualty_id
 std_msgs/Float64 rate
 ```
+### JackalStatus
+```
+std_msgs/Header header
+
+# 0 is not running, 1 is running
+bool controller
+bool rgb
+bool thermal
+bool ouster
+bool gps
+bool rtk
+bool radar
+```
+### FalconStatus
+```
+std_msgs/Header header
+
+# 0 is not running, 1 is running
+bool rgb
+bool thermal
+bool gps
+bool rtk
+```
 ### GroundDetection
 ```
 std_msgs/Header header

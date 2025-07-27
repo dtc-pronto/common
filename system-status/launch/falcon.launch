@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="system_status" type="falcon_node.py" name="falcon_status" output="screen">
+        <rosparam command="load" file="$(find system_status)/config/topics.yaml"/>
+    </node>
+</launch>

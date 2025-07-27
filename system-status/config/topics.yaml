@@ -1,0 +1,15 @@
+jackal:
+  topics:
+    rgb: "/camera/image_color"
+    thermal: "/boson640/camera"
+    ouster: "/ouster/points2"
+    gps: "/ublox/fix"
+    rtk: "/rtcm"
+
+falcon:
+  topics:
+    rgb: "/camera/image_color"
+    thermal: "/boson640/camera"
+    gps: "/mavros/global_position/global/fix/raw"
+    rtk: "/mavros/rtcm/in"
+
