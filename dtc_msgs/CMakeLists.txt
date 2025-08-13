@@ -23,6 +23,8 @@ add_message_files(
   GroundImage.msg
   JackalStatus.msg
   FalconStatus.msg
+  CasualtyFix.msg
+  CasualtyFixArray.msg
 )
 catkin_python_setup()
 
