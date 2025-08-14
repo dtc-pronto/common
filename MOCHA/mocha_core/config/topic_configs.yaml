@@ -5,13 +5,8 @@ ground_robot:
     msg_history: "LAST_MESSAGE"
 
 aerial_robot:
-  - msg_topic: "/mavros/global_position/raw/fix"
-    msg_type: "sensor_msgs/NavSatFix"
-    msg_priority: "HIGH_PRIORITY"
-    msg_history: "LAST_MESSAGE"
-
-  - msg_topic: "/camera/image_color/compressed"
-    msg_type: "sensor_msgs/CompressedImage"
+  - msg_topic: "/casualty_info"
+    msg_type: "dtc_msgs/CasualtyFix"
     msg_priority: "HIGH_PRIORITY"
     msg_history: "LAST_MESSAGE"
 
