@@ -37,7 +37,10 @@ RUN sudo apt-get install -y ros-noetic-vision-msgs
 RUN mkdir -p ws/src
 RUN cd ws/src && mkdir MOCHA
 
-COPY MOCHA/ ws/src/MOCHA/
+COPY mocha_core/ ws/src/mocha_core/
+COPY mocha_launch/ ws/src/mocha_launch/
+COPY interface_rajant/ ws/src/interface_rajant/
+
 #RUN mkdir -p ws/src
 #RUN cd ws/src && mkdir MOCHA
 
