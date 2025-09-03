@@ -7,6 +7,10 @@ ground_robot:
     msg_type: "std_msgs/String"
     msg_priority: "HIGH_PRIORITY"
     msg_history: "LAST_MESSAGE"
+  - msg_topic: "/processed_image"
+    msg_type: "sensor_msgs/Image"
+    msg_priority: "HIGH_PRIORITY"
+    msg_history: "LAST_MESSAGE"
 
 aerial_robot:
   - msg_topic: "/casualty_info"
