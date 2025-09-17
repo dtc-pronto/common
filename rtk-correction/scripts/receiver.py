@@ -15,8 +15,8 @@ class Jackal:
     def __init__(self):
         rospy.init_node('gps_corr_jackal')
 
-        ip = rospy.get_param("/rtk_reciever/ip")
-        port = rospy.get_param("/rtk_reciever/port")
+        ip = rospy.get_param("/rtk_receiver/ip")
+        port = rospy.get_param("/rtk_receiver/port")
 
         self.context = zmq.Context()
         self.socket = self.context.socket(zmq.SUB)
@@ -44,12 +44,8 @@ class Jackal:
                  
             rospy.sleep(0.1)
 
-        finally:
-            self.socket.close()
-            self.context.term()
-
-
-
+        self.socket.close()
+        self.context.term()
 
 if __name__ == "__main__":
     Jackal().rtcm_pub_sub()

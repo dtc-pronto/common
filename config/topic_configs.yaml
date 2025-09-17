@@ -1,0 +1,25 @@
+ground_robot:
+  - msg_topic: "/ublox/fix"
+    msg_type: "sensor_msgs/NavSatFix"
+    msg_priority: "HIGH_PRIORITY"
+    msg_history: "LAST_MESSAGE"
+  - msg_topic: "/report_status"
+    msg_type: "std_msgs/String"
+    msg_priority: "HIGH_PRIORITY"
+    msg_history: "LAST_MESSAGE"
+  - msg_topic: "/processed_image"
+    msg_type: "sensor_msgs/Image"
+    msg_priority: "HIGH_PRIORITY"
+    msg_history: "LAST_MESSAGE" 
+
+aerial_robot:
+  - msg_topic: "/casualty_info"
+    msg_type: "dtc_msgs/CasualtyFixArray"
+    msg_priority: "HIGH_PRIORITY"
+    msg_history: "LAST_MESSAGE"
+
+base_station:
+  - msg_topic: "/dummy"
+    msg_type: "std_msgs/Header"
+    msg_priority: "HIGH_PRIORITY"
+    msg_history: "LAST_MESSAGE"

@@ -36,22 +36,24 @@ RUN sudo apt-get install -y ros-noetic-vision-msgs
 
 RUN mkdir -p ws/src
 RUN cd ws/src && mkdir MOCHA
+RUN cd ws/src && git clone https://github.com/tilk/rtcm_msgs
 
-COPY mocha_core/ ws/src/mocha_core/
-COPY mocha_launch/ ws/src/mocha_launch/
-COPY interface_rajant/ ws/src/interface_rajant/
-
-#RUN mkdir -p ws/src
-#RUN cd ws/src && mkdir MOCHA
-
-#COPY MOCHA/ ws/src/MOCHA/
-
+COPY MOCHA/ ws/src/MOCHA/
+COPY dtc_msgs ws/src/dtc_msgs
+COPY rtk-correction ws/src/rtk-correction
 
 RUN cd ws \
  && catkin config --extend /opt/ros/noetic \
  && catkin build --no-status
 
+COPY ./entrypoint.bash entrypoint.bash
+
+ENV MOCHA=false
+ENV RTK=false
+
 RUN sudo chown $USER:$USER ~/.bashrc \
  && /bin/sh -c 'echo ". /opt/ros/noetic/setup.bash" >> ~/.bashrc' \
  && /bin/sh -c 'echo "source ~/ws/devel/setup.bash" >> ~/.bashrc' \
  && echo 'export PS1="\[$(tput setaf 2; tput bold)\]\u\[$(tput setaf 7)\]@\[$(tput setaf 3)\]\h\[$(tput setaf 7)\]:\[$(tput setaf 4)\]\W\[$(tput setaf 7)\]$ \[$(tput sgr0)\]"' >> ~/.bashrc
+
+RUN sudo chown $USER:$USER entrypoint.bash && chmod +x entrypoint.bash
