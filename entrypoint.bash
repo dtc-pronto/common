@@ -24,3 +24,5 @@ if [ "$RTK" = true ]; then
 	;;
     esac
 fi
+
+wait
