@@ -7,6 +7,7 @@ basestation:
     - "dione"
     - "phobos"
     - "deimos"
+    - "titania"
 
 dione:
   node-type: "aerial_robot"
@@ -17,6 +18,7 @@ dione:
     - "basestation"
     - "phobos"
     - "deimos"
+    - "titania"
 
 phobos:
   node-type: "ground_robot"
@@ -27,6 +29,7 @@ phobos:
     - "basestation"
     - "dione"
     - "deimos"
+    - "titania"
 
 deimos:
   node-type: "ground_robot"
@@ -36,5 +39,17 @@ deimos:
   clients:
     - "basestation"
     - "phobos"
+    - "dione"
+    - "titania"
+
+titania:
+  node-type: "ground_robot"
+  IP-address: "10.10.10.114"
+  using-radio: "deep-blue-5"
+  base-port: 5254
+  clients:
+    - "basestation"
+    - "phobos"
+    - "deimos"
     - "dione"
 
