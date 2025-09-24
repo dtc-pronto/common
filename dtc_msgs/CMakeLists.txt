@@ -25,6 +25,7 @@ add_message_files(
   FalconStatus.msg
   CasualtyFix.msg
   CasualtyFixArray.msg
+  ScoreCardString.msg
 )
 catkin_python_setup()
 
