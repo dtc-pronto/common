@@ -41,6 +41,7 @@ RUN cd ws/src && git clone https://github.com/tilk/rtcm_msgs
 COPY MOCHA/ ws/src/MOCHA/
 COPY dtc_msgs ws/src/dtc_msgs
 COPY rtk-correction ws/src/rtk-correction
+COPY spoof-debugger ws/src/spoofer
 
 RUN cd ws \
  && catkin config --extend /opt/ros/noetic \
