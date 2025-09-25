@@ -1,0 +1,7 @@
+<launch>
+    <param name="robot" value="drone"/>
+    <node name="spoofer_node" pkg="spoofer" type="node.py" output="screen">
+        <param name="kml_path" value="$(find spoofer)/config/pennovation-grass-casualty.kml"/>
+        <param name="robot_path" value="$(find spoofer)/config/robot.yaml"/>
+    </node>
+</launch>
