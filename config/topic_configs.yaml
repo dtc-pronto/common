@@ -4,17 +4,17 @@ ground_robot:
     msg_priority: "HIGH_PRIORITY"
     msg_history: "LAST_MESSAGE"
   - msg_topic: "/report_status"
-    msg_type: "std_msgs/ScoreCardString"
+    msg_type: "dtc_msgs/ScoreCardString"
     msg_priority: "HIGH_PRIORITY"
     msg_history: "LAST_MESSAGE"
-  - msg_topic: "/processed_image"
-    msg_type: "sensor_msgs/Image"
-    msg_priority: "HIGH_PRIORITY"
-    msg_history: "LAST_MESSAGE" 
 
 aerial_robot:
   - msg_topic: "/casualty_info"
     msg_type: "dtc_msgs/CasualtyFixArray"
+    msg_priority: "HIGH_PRIORITY"
+    msg_history: "LAST_MESSAGE"
+  - msg_topic: "/mavros/global_position/raw_fix"
+    msg_type: "sensor_msgs/NavSatFix"
     msg_priority: "HIGH_PRIORITY"
     msg_history: "LAST_MESSAGE"
 
