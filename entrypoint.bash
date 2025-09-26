@@ -24,5 +24,5 @@ if [ "$RTK" = true ]; then
 	;;
     esac
 fi
-
+roslaunch system_status jackal.launch --wait &
 wait

@@ -42,6 +42,9 @@ COPY MOCHA/ ws/src/MOCHA/
 COPY dtc_msgs ws/src/dtc_msgs
 COPY rtk-correction ws/src/rtk-correction
 COPY spoof-debugger ws/src/spoofer
+COPY system-status ws/src/system-status
+
+RUN sudo apt-get install ros-noetic-audio-common-msgs
 
 RUN cd ws \
  && catkin config --extend /opt/ros/noetic \
