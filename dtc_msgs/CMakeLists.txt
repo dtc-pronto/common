@@ -26,6 +26,12 @@ add_message_files(
   CasualtyFix.msg
   CasualtyFixArray.msg
   ScoreCardString.msg
+  BoundingBox.msg
+  CasualtyImage.msg
+  ReportAndImage.msg
+  TrackingState.msg
+  TriageReport.msg
+  VitalSigns.msg
 )
 catkin_python_setup()
 
