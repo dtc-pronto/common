@@ -15,7 +15,9 @@ class JackalMonitor:
 
     def __init__(self) -> None:
         self.topics_ = rospy.get_param("/jackal_status/jackal/topics")
+        self.rtk_ = False
         self.timer_ = rospy.Timer(rospy.Duration(2.0), self.statusCallback)
+        rospy.Subscriber("/ublox/fix", NavSatFix, self.rtkCallback)
 
         print("[JACKAL-STATUS] Using topics: ", self.topics_)
             
@@ -29,12 +31,26 @@ class JackalMonitor:
                 return key
             return None
 
+    def rtkCallback(self, msg : NavSatFix) -> None:
+        if msg.position_covarinace[0] < 1.0 and msg.position_covariance[1] < 1.0:
+            self.rtk_ = True
+        else:
+            self.rtk_ = False
+
     def statusCallback(self, event : TimerEvent) -> None:
         active_topics = rospy.get_published_topics()
         
         active_topic_list = [topic[0] for topic in active_topics]
 
         msg = JackalStatus()
+
+        msg.rgb = False
+        msg.jeti = False
+        msg.thermal = False
+        msg.ouster = False
+        msg.gps = False
+        msg.rtk = False
+        msg.mic = False
 
         for topic in self.topics_:
             if topic in self.topics_:
@@ -45,9 +61,16 @@ class JackalMonitor:
                     msg.thermal = True
                 elif key == "gps":
                     msg.gps = True
-                elif key == "rtk":
-                    msg.rtk = True    
-                elif key == "radar":
-                    msg.radar = True
+                elif key == "mic":
+                    msg.mic = True
+                elif key == "controller":
+                    msg.jeti = True
+                elif key == "ouster":
+                    msg.ouster = True
+
+        msg.rtk = self.rtk_
+
+        msg.header.stamp = rospy.Timer.now()
+        msg.header.frame_id = "jackal"
 
         self.pub_.publish(msg)
