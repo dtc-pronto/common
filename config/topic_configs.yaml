@@ -8,7 +8,7 @@ ground_robot:
     msg_priority: "HIGH_PRIORITY"
     msg_history: "LAST_MESSAGE"
   - msg_topic: "/sensor_status"
-    msg_type: "dtc_msgs/JackalSatus"
+    msg_type: "dtc_msgs/JackalStatus"
     msg_priority: "HIGH_PRIORITY"
     msg_history: "LAST_MESSAGE"
 
