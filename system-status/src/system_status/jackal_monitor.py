@@ -51,7 +51,7 @@ class JackalMonitor:
         return None
 
     def rtkCallback(self, msg : NavSatFix) -> None:
-        if msg.position_covarinace[0] < 0.2 and msg.position_covariance[1] < 0.2:
+        if msg.position_covariance[0] < 0.2 and msg.position_covariance[1] < 0.2:
             self.rtk_ = True
         else:
             self.rtk_ = False
