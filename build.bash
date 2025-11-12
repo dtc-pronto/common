@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build --build-arg user_id=$(id -u) --build-arg USER=dtc --build-arg NAME=$(hostname) --rm -t dtc-platform-$(hostname):common .
+docker build --rm -t dtc-platform-$(hostname):common .

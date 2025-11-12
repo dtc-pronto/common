@@ -6,32 +6,45 @@
 
 import serial
 import zmq
-import rospy
+import rclpy
+from rclpy.node import Node
 from pyrtcm import RTCMReader
 
-class Basestation:
+class Basestation(Node):
     def __init__(self):
-        rospy.init_node("rtk_broadcaster")
-        self.context = zmq.Context()
-        self.socket = self.context.socket(zmq.PUB)
-        
-        ip = rospy.get_param("/rtk_broadcaster/ip")
-        port = rospy.get_param("/rtk_broadcaster/port")
+        super().__init__("rtk_broadcaster")
+        self.context_ = zmq.Context()
+        self.socket = self.context_.socket(zmq.PUB)
+       
+        self.declare_parameter("ip", "127.0.0.1")
+        self.declare_parameter("port", 7505)
+
+        ip = self.get_parameter("ip").value
+        port = self.get_parameter("port").value
+
         self.socket.bind(f"tcp://{ip}:{port}")
 
     def broadcast(self):
         with serial.Serial('/dev/ublox', 38400, timeout=3) as stream:
             rtr = RTCMReader(stream)
-            rospy.loginfo_once("[RTK] Connected to GPS")
-            while not rospy.is_shutdown():
+            self.get_logger().info("[RTK] Connected to GPS")
+            while rclpy.ok():
                 raw_data, parsed_data = rtr.read()
                 #print(raw_data, parsed_data)
                 if parsed_data is not None:
                     # Broadcast raw data
-                    rospy.loginfo_once("[RTK] Broadcasting corrections")
+                    self.get_logger().info("[RTK] Broadcasting corrections", once=True)
                     self.socket.send(raw_data)
 
+def main(args=None):
+    rclpy.init(args=args)
+
+    node = Basestation()
+
+    node.broadcast()
+
+    node.destroy_node()
+    rclpy.shutdown()
 
 if __name__ == "__main__":
-    basestation = Basestation()
-    basestation.broadcast()
+    main()
