@@ -1,28 +1,19 @@
 #!/bin/bash
 
 HOSTNAME=$(hostname)
-source /opt/ros/noetic/setup.bash
-source ws/devel/setup.bash
+source /opt/ros/jazzy/setup.bash
+source ws/install/setup.bash
 if [ "$MOCHA" = true ]; then
-    echo "[MOCHA] Launching MOCHA"
-    case "$HOSTNAME" in phobos|deimos|titania|oberon)
-	echo "Launching MOCHA for $HOSTNAME"
-    	roslaunch mocha_launch jackal.launch robot_name:=$HOSTNAME --wait &
-	;;
-    *)
-	roslaunch mocha_launch basestation.launch robot_name:=basestation --wait &
-	;;
-    esac
+    echo "[MOCHA] MOCHA NOT READY YET"
 fi
 if [ "$RTK" = true ]; then
     case "$HOSTNAME" in phobos|deimos|titania|oberon)
 	echo "[RTK] Launching RTK for $HOSTNAME"
-	roslaunch rtk_correction jackal.launch --wait &
+	ros2 launch rtk_correction receiver.launch.py ip:="${BROADCASTER_IP}" port:="${BROADCASTER_PORT}" &
 	;;
     *)
-	roslaunch rtk_correction broadcaster.launch --wait &
+	ros2 launch rtk_correction broadcaster.launch.py ip:="${BROADCASTER_IP}" port:="${BROADCASTER_PORT}" &
 	;;
     esac
 fi
-roslaunch system_status jackal.launch --wait &
 wait
