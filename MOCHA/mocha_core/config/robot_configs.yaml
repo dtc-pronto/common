@@ -1,40 +1,54 @@
 basestation:
   node-type: "base_station"
-  IP-address: "10.10.10.10"
-  using-radio: "cardinal-3"
+  IP-address: "10.10.10.100"
+  using-radio: "brick-1"
   base-port: "1234"
   clients:
-    - "dione"
-    - "phobos"
-    - "deimos"
+    - "callisto"
+    - "europa"
+    - "io"
+    - "titan"
 
-dione:
-  node-type: "aerial_robot"
-  IP-address: "10.10.10.106"
-  using-radio: "dx4-5"
-  base-port: "6234"
-  clients:
-    - "basestation"
-    - "phobos"
-    - "deimos"
-
-phobos:
+europa:
   node-type: "ground_robot"
-  IP-address: "10.10.10.111"
-  using-radio: "deep-blue-3"
+  IP-address: "10.10.10.101"
+  using-radio: "blue-2"
   base-port: "2234"
   clients:
     - "basestation"
-    - "dione"
-    - "deimos"
+    - "callisto"
+    - "io"
+    - "titan"
 
-deimos:
+callisto:
   node-type: "ground_robot"
-  IP-address: "10.10.10.112"
-  using-radio: "deep-blue-2"
+  IP-address: "10.10.10.102"
+  using-radio: "blue-6"
   base-port: "3234"
   clients:
     - "basestation"
-    - "phobos"
-    - "dione"
+    - "europa"
+    - "io"
+    - "titan"
 
+io:
+  node-type: "ground_robot"
+  IP-address: "10.10.10.103"
+  using-radio: "blue-5"
+  base-port: "4234"
+  clients:
+    - "basestation"
+    - "europa"
+    - "callisto"
+    - "titan"
+
+titan:
+  node-type: "aerial_robot"
+  IP-address: "10.10.10.107"
+  using-radio: "blue-1"
+  base-port: "6234"
+  clients:
+    - "basestation"
+    - "callisto"
+    - "europa"
+    - "io"
