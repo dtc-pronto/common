@@ -168,3 +168,6 @@ if __name__ == "__main__":
                     rospy.logerr(f"{robot_name}: YAML from Rajant did not look like an object!")
             except yaml.scanner.ScannerError:
                 rospy.logerr(f"{robot_name}: Could not parse YAML from Rajant!")
+            except yaml.reader.ReaderError:
+                rospy.logerr(f"{robot_name}: Could not parse YAML from Rajant!")
+                pdb.set_trace()

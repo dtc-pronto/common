@@ -24,7 +24,9 @@ COPY ./entrypoint.bash entrypoint.bash
 RUN sudo chmod +x entrypoint.bash
 
 ENV MOCHA=false
-ENV RTK=false
+ENV RTK=true
+ENV BROADCASTER_IP=127.0.0.1
+ENV BROADCASTER_PORT=7505
 
 RUN /bin/bash -c "\
     source /opt/ros/jazzy/setup.bash && \

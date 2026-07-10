@@ -18,11 +18,11 @@ class RTKReceiver(Node):
     def __init__(self):
         super().__init__('rtk_receiver')
 
-        self.declare_parameter("ip", "10.10.10.10.")
-        self.declare_parameter("port", 5000)
+        self.declare_parameter("rtk_ip", "10.10.10.10")
+        self.declare_parameter("rtk_port", 7507)
 
-        ip = self.get_parameter("ip").value
-        port = self.get_parameter("port").value
+        ip = self.get_parameter("rtk_ip").value
+        port = self.get_parameter("rtk_port").value
 
         self.context_ = zmq.Context()
         self.socket = self.context_.socket(zmq.SUB)
