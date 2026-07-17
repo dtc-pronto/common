@@ -5,6 +5,7 @@ xhost +
 docker run --rm -it \
   --network=host \
   --privileged \
+  --hostname `hostname` \
   -v "/tmp/.X11-unix:/tmp/.X11-unix" \
   -v "/dev:/dev" \
   --env-file ~/basestation/.env \
