@@ -18,29 +18,20 @@ def generate_launch_description():
 
     robot_configs_arg = DeclareLaunchArgument(
         'robot_configs',
-        default_value=PathJoinSubstitution([
-            FindPackageShare('mocha_core'),
-            'config', 'robot_configs.yaml'
-        ]),
-        description='Path to robot configuration file'
+        default_value='/home/dtc/config/robot_configs.yaml',
+        description='Path to the robot configs file'
     )
 
     topic_configs_arg = DeclareLaunchArgument(
         'topic_configs',
-        default_value=PathJoinSubstitution([
-            FindPackageShare('mocha_core'),
-            'config', 'topic_configs.yaml'
-        ]),
-        description='Path to topic configuration file'
+        default_value='/home/dtc/config/topic_configs.yaml',
+        description='Path to the topic configs file'
     )
 
     radio_configs_arg = DeclareLaunchArgument(
         'radio_configs',
-        default_value=PathJoinSubstitution([
-            FindPackageShare('mocha_core'),
-            'config', 'radio_configs.yaml'
-        ]),
-        description='Path to radio configuration file'
+        default_value='/home/dtc/config/radio_configs.yaml',
+        description='Path to the radio configs file'
     )
     wifi_backup_always_on_arg = DeclareLaunchArgument(
         'wifi_backup_always_on',
