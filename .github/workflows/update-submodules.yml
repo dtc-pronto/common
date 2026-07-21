@@ -1,0 +1,41 @@
+name: Update Submodules
+
+on:
+  schedule:
+    - cron: "0 9 * * *" # Every day at 4:00 AM EST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-submodules:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          submodules: recursive
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Update submodules
+        run: |
+          git submodule update --init --recursive
+          git submodule update --remote --recursive
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet; then
+            echo "No submodule updates."
+            exit 0
+          fi
+
+          git add .
+          git commit -m "chore: update submodules"
+          git push
