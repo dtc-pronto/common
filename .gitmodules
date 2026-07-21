@@ -1,15 +1,20 @@
 [submodule "MOCHA"]
 	path = MOCHA
 	url = git@github.com:dtc-pronto/MOCHA.git
+	branch = main
 [submodule "rtk-correction"]
 	path = rtk-correction
 	url = git@github.com:dtc-pronto/rtk-correction.git
+	branch = main
 [submodule "system-status"]
 	path = system-status
 	url = git@github.com:dtc-pronto/system-status.git
+	branch = main
 [submodule "dtc-msgs"]
 	path = dtc-msgs
 	url = git@github.com:dtc-pronto/dtc-msgs.git
+	branch = main
 [submodule "spoof-debugger"]
 	path = spoof-debugger
 	url = git@github.com:dtc-pronto/spoof-debugger.git
+	branch = main
