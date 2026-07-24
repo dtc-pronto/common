@@ -1,16 +1,15 @@
 basestation:
   node-type: "base_station"
-  IP-address: "10.10.10.216"
-  wifi-IP-address: "192.168.129.216"
-  using-radio: "cardinal-6"
+  IP-address: "10.10.10.10"
+  wifi-IP-address: "192.168.129.10"
+  using-radio: "super-brick"
   base-port: "1234"
   clients:
     - "dione"
     - "phobos"
     - "deimos"
     - "titania"
-    - "aphrodite"
-    - "ares"
+    - "oberon"
 
 dione:
   node-type: "aerial_robot"
@@ -25,6 +24,7 @@ dione:
     - "titania"
     - "aphrodite"
     - "ares"
+    - "oberon"
 
 phobos:
   node-type: "ground_robot"
@@ -39,6 +39,7 @@ phobos:
     - "titania"
     - "aphrodite"
     - "ares"
+    - "oberon"
 
 deimos:
   node-type: "ground_robot"
@@ -53,6 +54,7 @@ deimos:
     - "titania"
     - "aphrodite"
     - "ares"
+    - "oberon"
 
 titania:
   node-type: "ground_robot"
@@ -67,6 +69,7 @@ titania:
     - "dione"
     - "aphrodite"
     - "ares"
+    - "oberon"
 
 aphrodite:
   node-type: "ground_robot"
@@ -81,6 +84,7 @@ aphrodite:
     - "titania"
     - "dione"
     - "ares"
+    - "oberon"
 
 ares:
   node-type: "ground_robot"
@@ -95,3 +99,19 @@ ares:
     - "titania"
     - "dione"
     - "aphrodite"
+    - "oberon"
+
+oberon:
+  node-type: "ground_robot"
+  IP-address: "10.10.10.113"
+  wifi-IP-address: "192.168.129.113"
+  using-radio: "deep-blue-4"
+  base-port: 4245
+  clients:
+    - "basestation"
+    - "phobos"
+    - "deimos"
+    - "titania"
+    - "dione"
+    - "aphrodite"
+    - "ares"
